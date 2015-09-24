@@ -1,2 +1,5 @@
 .idea/
 .DS_Store
+neck/__pycache__/
+*.pyc
+*.pyo
