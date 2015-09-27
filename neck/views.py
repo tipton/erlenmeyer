@@ -15,7 +15,7 @@ def present_login_form():
     return render_template('login_form.html')
 
 
-@neck_app.route('/check_credentials')
+@neck_app.route('/check_credentials', methods=['get', 'post'])
 def check_login_credentials():
     """
     The login credentials come from the <form> on the login_prompt page.
@@ -36,18 +36,25 @@ def check_login_credentials():
 
     """
 
+    # Look at the stdout stream to see the values coming in from the login form
+    print('request.form values from login_form.html')
+    for x in request.form:
+        print('    {}: {}'.format(x, request.form[x]))
+
+
     credentials_ok = True           # Any failed test reverses value to False
 
     # Check that data entry fields exist and have some value in them
 
     # if '/check_credentials' route invoked without using login_prompt page
+    # then the request.form dictionary will not have expected entries
     if 'user_id' not in request.form:
         credentials_ok = False
 
     elif 'password' not in request.form:
         credentials_ok = False
 
-    # if one of the login entry fields is left empty
+    # if one of the request.form login entry fields is left empty
     elif not request.form['user_id']:
         credentials_ok = False
 
@@ -55,7 +62,7 @@ def check_login_credentials():
         credentials_ok = False
 
     # At this point, take the login credentials to do a database check
-    #    1. retrieve a user from the database
+    #    1. retrieve a user from the database with user_id as the key
     #    2. encrypt the password
     #    3. check that the encrypted password is correct for the user
 
@@ -73,7 +80,21 @@ def check_login_credentials():
 
 
 def user_in_database():
+    if request.form['user_id'] == 'oops':
+        return False
     return True
 
 def user_password_match():
+    if request.form['password'] == 'oops':
+        return False
     return True
+
+@neck_app.route('/more_action')
+def follow_on_action():
+    flash('More action selected.')
+    return render_template(('action_page.html'))
+
+@neck_app.route('/logout')
+def logout_option():
+    flash('Logged out.')
+    return render_template('login_form.html')

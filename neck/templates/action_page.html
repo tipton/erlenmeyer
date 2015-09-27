@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example Action Page</title>
+</head>
+<body>
+
+<h3>Erlenmeyer/Neck Example Action Page</h3>
+
+<p>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+</p>
+<p>This is where some action takes place <a href="/more_action">New Action</a>.</p>
+<p>Or you can <a href="/logout">logout</a>.</p>
+
+</body>
+</html>

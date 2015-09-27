@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Form Page</title>
+</head>
+<body>
+
+<h3>Erlenmeyer/Neck Example Login Page</h3>
+
+<p>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+</p>
+<form method="post" action="/check_credentials">
+    <input type="text" name="user_id" value="">
+    <input type="password" name="password" value="">
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
