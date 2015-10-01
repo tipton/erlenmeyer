@@ -19,11 +19,21 @@
     {% endif %}
 {% endwith %}
 </p>
-<form method="post" action="/check_credentials">
-    <input type="text" name="user_id" value="">
-    <input type="password" name="password" value="">
-    <input type="submit" value="Submit">
-</form>
+<form action="/check_credentials" method="post" id="login" name="login">
+
+
+            <div class="row" style="margin-top: 0; margin-bottom: 0; margin-left: 20px; padding-bottom: 0; padding-top: 0;"
+                ><label for="username">User Email </label
+                ><input type="text" id="username" name="user_id" value="" style="width: 330px"
+            ></div
+            ><div class="row" style="margin-top: 0; margin-bottom: 0; margin-left: 20px; padding-bottom: 0; padding-top: 0;"
+                ><label for="password">Password </label
+                ><input type="password" id="password" name="password" style="width: 330px" value=""
+            ></div
+            ><div class="row" style="margin-top: 0; margin-bottom: 0; margin-left: 20px; padding-bottom: 0; padding-top: 0;"
+               ><input type="submit" value="Sign In"
+            ></div
+        ></form>
 
 </body>
 </html>

@@ -1,0 +1,33 @@
+
+Flask in Minute Detail
+
+Hello, World!
+	Naming things - pet peeve
+	What is implicit; what must be explicit
+	80% of software is about naming things and subroutines
+	Names are arbitrary, but can be freighted with meaning
+		- particularly when the framework assigns meaning to names
+	Flask is largely about "request" and "response"
+		"request" includes cookie information (i.e., session info)
+	Living in an HTTP world - not just about data
+Break it apart: 
+	Some standards in naming
+	Imports to connect things
+	Circular imports in Python
+Landing Page
+	templates directory
+	Add login page
+	Add action page
+	static directory
+	use Python built-in library
+	make useful utility functions
+	difference between render_template() and redirect(url_for())
+
+
+
+
+
+
+
+
+

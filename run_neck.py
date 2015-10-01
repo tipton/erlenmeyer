@@ -3,6 +3,7 @@
 
 import logging
 from neck import neck_app
+neck_app.secret_key = 'erlenmeyer'
 
 from neck import views
 

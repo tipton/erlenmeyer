@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import render_template, flash, request
+from flask import render_template, flash, request, redirect, url_for
 
 from . import neck_app
 from .lib_one import show_now
@@ -73,10 +73,10 @@ def check_login_credentials():
         credentials_ok = False
 
     if credentials_ok:
-        return render_template('action_page.html')
+        return redirect(url_for('first_action'))
 
     flash('Username-Password combination not valid.')
-    return render_template('login_form.html')
+    return redirect(url_for('present_login_form'))
 
 
 def user_in_database():
@@ -89,6 +89,10 @@ def user_password_match():
         return False
     return True
 
+@neck_app.route('/first_action')
+def first_action():
+    return render_template('action_page.html')
+
 @neck_app.route('/more_action')
 def follow_on_action():
     flash('More action selected.')
@@ -97,4 +101,4 @@ def follow_on_action():
 @neck_app.route('/logout')
 def logout_option():
     flash('Logged out.')
-    return render_template('login_form.html')
+    return redirect(url_for('present_login_form'))
